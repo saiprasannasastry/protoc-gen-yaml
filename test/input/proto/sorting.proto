@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package echo.v1;
+
+option go_package = ".";
+message SortingRequest {
+  string value = 1;
+}
+message SaiReq{
+  string value =1;
+  string name= 2;
+}
+message SortingResponse {
+  Foo1 foo = 1;
+}
+
+message Foo1 {
+  message Bar {
+    string value = 1;
+  }
+  message Aoo{
+    string val=1;
+  }
+  string two = 2;
+  string one = 1;
+}
+
+service SortingService {
+  rpc Beta(SortingRequest) returns (SortingResponse);
+  rpc Echo(SortingRequest) returns (SortingResponse);
+  rpc Alpha(SortingRequest) returns (SortingResponse);
+  //rpc Echo3(EchoRequest) returns (EchoResponse);
+}
+service EchoService1 {
+  rpc Echo1(SortingRequest) returns (SortingResponse);
+}
